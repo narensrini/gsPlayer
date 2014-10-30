@@ -8,7 +8,8 @@
         "scripts": ["backgrounnd.js"]
     },
   "browser_action": {
-    "default_title": "What up?",
+    "default_title": "Groovershark",
+    "default_icon": "img/icon.png",
     "default_popup": "popup.html"
   },
   "content_scripts": [
