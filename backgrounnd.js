@@ -42,7 +42,5 @@ function selectTab() {
         var tabToActivate = tabs[0];
         tabToActivate_Id = tabToActivate.id;
         chrome.tabs.update(tabToActivate_Id, {active: true});
-		/* chrome.tabs.highlight({tabs:tabs[0].id}); */
-        /* tab[0].active = true; */
 	});
 }
