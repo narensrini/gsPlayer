@@ -20,4 +20,19 @@ chrome.runtime.onMessage.addListener(
  			str = document.getElementById("play-pause").className;
   		sendResponse({data: str});
     }
+    else if(request.message == 'playpause'){
+        var str = ""; 
+        document.getElementById("play-pause").click();
+        sendResponse({data: str});//this is just a temporary fix :p
+    } 
+    else if(request.message == 'playnext'){
+        var str = ""; 
+        document.getElementById("play-next").click();
+        sendResponse({data: str});//this is just a temporary fix :p
+    } 
+    else if(request.message == 'playprev'){
+        var str = ""; 
+        document.getElementById("play-prev").click();
+        sendResponse({data: str});//this is just a temporary fix :p
+    } 
   });

@@ -62,3 +62,27 @@ function getAlbumArt() {
 		});
 	});
 }
+
+function playPause() {
+	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {message:'playpause'}, function(response) {
+			return;
+		});
+	});
+}
+
+function playPrev() {
+	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {message:'playprev'}, function(response) {
+			return;
+		});
+	});
+}
+
+function playNext() {
+	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {message:'playnext'}, function(response) {
+			return;
+		});
+	});
+}
