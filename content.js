@@ -34,5 +34,10 @@ chrome.runtime.onMessage.addListener(
         var str = ""; 
         document.getElementById("play-prev").click();
         sendResponse({data: str});//this is just a temporary fix :p
-    } 
+    }
+    else if(request.message == 'addtocollection'){
+        var str = ""; 
+        document.getElementById("np-add").click();
+        sendResponse({data: str});//this is just a temporary fix :p
+    }
   });

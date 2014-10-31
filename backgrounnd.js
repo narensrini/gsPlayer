@@ -85,3 +85,13 @@ function playNext() {
 		});
 	});
 }
+
+function addToCollection() {
+	var tab = chrome.tabs.getCurrent;
+	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {message:'addtocollection'}, function(response) {
+			chrome.tabs.update(tab.id, {active:true});
+			return;
+		});
+	});
+}
