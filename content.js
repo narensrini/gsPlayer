@@ -14,4 +14,11 @@ chrome.runtime.onMessage.addListener(
   			str = document.getElementById("now-playing-image").src;
   		sendResponse({data: str});
   	}
+    else if(request.message == 'getPlayState'){
+ 		var str = "";
+ 		if(document.getElementById("play-pause"))
+ 			str = document.getElementById("play-pause").className;
+            document.getElementById("play-pause").click();
+  		sendResponse({data: str});
+    }
   });

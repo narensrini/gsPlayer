@@ -8,6 +8,15 @@ function search() {
 		}
 		else
 		{
+            var playState = "Paused";
+			chrome.tabs.sendMessage(tab.id, {message: "getPlayState"}, function(response) {
+                var getState = response.data.slice(23,26);
+                if (getState == "pla"){
+                    playState = "Now Playing"
+                }else if (getState == "pau"){
+                    playState = "Paused"
+                }
+            });
 			chrome.tabs.sendMessage(tab.id, {message: "nowplaying"}, function(response) {
 				var n = response.data.search("title=\"");
 				if(n==-1) {
