@@ -8,13 +8,12 @@ function search() {
 		}
 		else
 		{
-            var playState = "Paused";
 			chrome.tabs.sendMessage(tab.id, {message: "getPlayState"}, function(response) {
                 var getState = response.data.slice(23,26);
                 if (getState == "pla"){
-                    playState = "Now Playing"
+                    document.getElementById("pstate").innerHTML = "<b>Now Playing</b> - ";
                 }else if (getState == "pau"){
-                    playState = "Paused"
+                    document.getElementById("pstate").innerHTML = "<b>Paused</b> - ";
                 }
             });
 			chrome.tabs.sendMessage(tab.id, {message: "nowplaying"}, function(response) {
@@ -39,7 +38,7 @@ function search() {
 				};
 				i-=1;
 				artist = newstr.slice(n,i);
-				document.getElementById("Stuff").innerHTML = "<b>"+playState+"</b> - " + artist + " - " + title;
+				document.getElementById("Stuff").innerHTML = artist + " - " + title;
 				return;
 			});
 		} 
