@@ -39,7 +39,7 @@ function search() {
 				};
 				i-=1;
 				artist = newstr.slice(n,i);
-				document.getElementById("Stuff").innerHTML = "<b>Now Playing</b> - " + artist + " - " + title;
+				document.getElementById("Stuff").innerHTML = "<b>"+playState+"</b> - " + artist + " - " + title;
 				return;
 			});
 		} 

@@ -18,7 +18,6 @@ chrome.runtime.onMessage.addListener(
  		var str = "";
  		if(document.getElementById("play-pause"))
  			str = document.getElementById("play-pause").className;
-            document.getElementById("play-pause").click();
   		sendResponse({data: str});
     }
   });
