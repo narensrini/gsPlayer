@@ -8,4 +8,10 @@ chrome.runtime.onMessage.addListener(
  			str = "Nothing is playing.";
   		sendResponse({data: str});
   	}
+  	else if(request.message == 'art') {
+  		var str;
+  		if(document.getElementById("now-playing-image"))
+  			str = document.getElementById("now-playing-image").src;
+  		sendResponse({data: str});
+  	}
   });

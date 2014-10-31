@@ -44,3 +44,12 @@ function selectTab() {
         chrome.tabs.update(tabToActivate_Id, {active: true});
 	});
 }
+
+function getAlbumArt() {
+	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {message:'art'}, function(response) {
+			document.getElementById("albumart").src=response.data;
+			return;
+		});
+	});
+}
