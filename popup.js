@@ -3,6 +3,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	getAlbumArt();
 });
 
-document.addEventListener('click', function(){ 
-	selectTab();
-});
+

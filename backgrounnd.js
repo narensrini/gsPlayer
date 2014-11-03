@@ -11,8 +11,10 @@ function search() {
 			chrome.tabs.sendMessage(tab.id, {message: "getPlayState"}, function(response) {
                 var getState = response.data.slice(23,26);
                 if (getState == "pla"){
+                	document.getElementById("playpause").src = "/img/Pause.png";
                     document.getElementById("pstate").innerHTML = "<b>Now Playing</b> - ";
                 }else if (getState == "pau"){
+                	document.getElementById("playpause").src = "/img/Play.png";
                     document.getElementById("pstate").innerHTML = "<b>Paused</b> - ";
                 }
             });
@@ -38,6 +40,11 @@ function search() {
 				};
 				i-=1;
 				artist = newstr.slice(n,i);
+				document.getElementById("prev").src = "/img/Prev.png";
+				document.getElementById("next").src = "/img/Next.png";
+				document.getElementById("next").onclick = playNext;
+				document.getElementById("prev").onclick = playPrev;
+				document.getElementById("playpause").onclick = playPause;
 				document.getElementById("Stuff").innerHTML = artist + " - " + title;
 				return;
 			});
@@ -65,6 +72,8 @@ function getAlbumArt() {
 function playPause() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'playpause'}, function(response) {
+			search();
+			getAlbumArt();
 			return;
 		});
 	});
@@ -73,6 +82,9 @@ function playPause() {
 function playPrev() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'playprev'}, function(response) {
+			sleep(500);
+			search();
+			getAlbumArt();
 			return;
 		});
 	});
@@ -81,6 +93,9 @@ function playPrev() {
 function playNext() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'playnext'}, function(response) {
+			sleep(500);
+			search();
+			getAlbumArt();
 			return;
 		});
 	});
@@ -94,4 +109,18 @@ function addToCollection() {
 			return;
 		});
 	});
+}
+
+chrome.commands.onCommand.addListener(function(command) {
+  search();
+  getAlbumArt();
+});
+
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
 }
