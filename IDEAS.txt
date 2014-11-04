@@ -1,0 +1,2 @@
+https://developer.chrome.com/extensions/commands
+(API TO ADD KEYBOARD SHORTCUTS FOR PLAY PAUSE AND STUFF) - Saksham
