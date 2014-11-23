@@ -1,0 +1,24 @@
+body{
+	background: #8E79AD;
+}
+#currentSong{
+	background: #6A4E90;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 2.5px;
+	box-shadow: 2px 2 5px black;
+}
+#Stuff{
+	color: white;
+	margin-bottom: 10px;
+}
+#pstate{
+	color: #BBABD3;
+}
+#albumart{
+	border-radius: 5px;
+	padding-bottom: 20px;
+	width: 100px;
+	height: auto;
+}
