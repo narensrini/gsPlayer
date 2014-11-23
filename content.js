@@ -38,6 +38,7 @@ function(request, sender, sendResponse) {
         var states = [1,1];//start by assuming both are valid
         var prevClass =  document.getElementById("play-prev").getAttribute("class").length;
         var nextClass =  document.getElementById("play-next").getAttribute("class").length;
+        console.log(nextClass);
         if (prevClass === 31){//then it's disabled
           states[0] = 0; 
         }

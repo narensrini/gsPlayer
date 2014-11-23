@@ -20,25 +20,26 @@ function search() {
             });
       chrome.tabs.sendMessage(tab.id, {message: "getNextAndPrev"}, function (response) {
         //see if skip to next song or previous song is available.
-            var NPInfo = response.data;
-            if (NPInfo[0]){ //check if prev is possible
-              document.getElementById("prev").src = "/img/Prev.png";
-            }else{
-              document.getElementById("prev").src = "/img/PrevFaded.png";
-            }
-            if (NPInfo[1]){//check if next is possible
-              document.getElementById("next").src = "/img/Next.png";
-            }
-            else{
-              document.getElementById("next").src = "/img/NextFaded.png";
-            }
+            NPStates = response.data;
         });
 			chrome.tabs.sendMessage(tab.id, {message: "nowplaying"}, function(response) {
 				var n = response.data.search("title=\"");
 				if(n==-1) {
 					document.getElementById("Stuff").innerHTML = "Nothing is playing";
 					return;
-				}
+				}else{
+            if (NPStates[0]){ //check if prev is possible
+              document.getElementById("prev").src = "/img/Prev.png";
+            }else{
+              document.getElementById("prev").src = "/img/PrevFaded.png";
+            }
+            if (NPStates[1]){//check if next is possible
+              document.getElementById("next").src = "/img/Next.png";
+            }
+            else{
+              document.getElementById("next").src = "/img/NextFaded.png";
+            }
+        }
 				n+=7;
 				var i = n;
 				while(response.data[i] != ">") {
