@@ -60,6 +60,10 @@ function search() {
 				document.getElementById("next").onclick = playNext;
 				document.getElementById("prev").onclick = playPrev;
 				document.getElementById("playpause").onclick = playPause;
+				//If title length > 12, implement marquee
+				if(title.length>12){
+					document.getElementById("Stuff").parentElement.innerHTML="<marquee>"+document.getElementById("Stuff").parentElement.innerHTML+"</marquee";
+				}
 				document.getElementById("Stuff").innerHTML = artist + " - " + title;
 				return;
 			});

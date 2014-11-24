@@ -8,13 +8,48 @@ body{
 	padding-right: 10px;
 	border-radius: 2.5px;
 	box-shadow: 2px 2 5px black;
+	overflow: hidden;
 	width: 225px; 
 	height: 40px;
 }
 #Stuff{
 	color: white;
 	margin-bottom: 10px;
+	display: block;
+	white-space: nowrap;
+	/*-webkit-animation: marquee 8s linear infinite;*/
 }
+/*
+
+@-webkit-keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  50.001% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-100%);
+  }
+  50.001% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+*/
 #pstate{
 	color: #A6A6A6;
 }
