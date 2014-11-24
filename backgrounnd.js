@@ -61,10 +61,13 @@ function search() {
 				document.getElementById("prev").onclick = playPrev;
 				document.getElementById("playpause").onclick = playPause;
 				//If title length > 12, implement marquee
-				if(title.length>12){
-					document.getElementById("Stuff").parentElement.innerHTML="<marquee>"+document.getElementById("Stuff").parentElement.innerHTML+"</marquee";
-				}
 				document.getElementById("Stuff").innerHTML = artist + " - " + title;
+				if(title.length>12){
+					document.getElementById("Stuff").parentElement.innerHTML=" "+document.getElementById("Stuff").parentElement.innerHTML+" ";
+					document.getElementById("Stuff").parentElement.innerHTML="<marquee>"+document.getElementById("Stuff").parentElement.innerHTML+"</marquee>";
+				}
+				else
+					document.getElementById("Stuff").parentElement.innerHTML=" "+document.getElementById("Stuff").parentElement.innerHTML+" ";
 				return;
 			});
 		} 
