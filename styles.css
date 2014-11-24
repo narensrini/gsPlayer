@@ -1,8 +1,8 @@
 body{
-	background: #8E79AD;
+	background: linear-gradient(to bottom, #F4A515 , #F86F05);
 }
 #currentSong{
-	background: #6A4E90;
+	background: #2B2B2B;
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -14,7 +14,7 @@ body{
 	margin-bottom: 10px;
 }
 #pstate{
-	color: #BBABD3;
+	color: #A6A6A6;
 }
 #albumart{
 	border-radius: 5px;
