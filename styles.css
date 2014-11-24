@@ -1,15 +1,20 @@
 body{
 	background: linear-gradient(to bottom, #F4A515 , #F86F05);
+	width: 245px;
+	height: auto;
 }
 #currentSong{
+	margin-top: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 	background: #2B2B2B;
 	padding: 5px;
 	padding-left: 10px;
 	padding-right: 10px;
-	border-radius: 2.5px;
+	border-radius: 5px;
 	box-shadow: 2px 2 5px black;
 	overflow: hidden;
-	width: 225px; 
+	width: 220px; 
 	height: 40px;
 }
 #Stuff{
@@ -54,8 +59,14 @@ body{
 	color: #A6A6A6;
 }
 #albumart{
+	margin-left: 5px;
 	border-radius: 5px;
 	padding-bottom: 20px;
 	width: 100px;
 	height: auto;
+}
+#add{
+	background: white;
+	margin-left: 62.5px;
+	margin-bottom: 5px;
 }
