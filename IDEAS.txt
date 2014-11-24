@@ -1,2 +1,7 @@
 https://developer.chrome.com/extensions/commands
 (API TO ADD KEYBOARD SHORTCUTS FOR PLAY PAUSE AND STUFF) - Saksham
+To Do:
+------
+-Marquee overflow when title is too long
+-fix play pause images on different tabs bug
+-implement keyboard shortcuts
