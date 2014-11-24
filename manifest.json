@@ -18,14 +18,14 @@
   "commands": {
     "_execute_browser_action": {
       "suggested_key": {
-        "default": "Ctrl+Shift+G",
-        "mac": "Command+Shift+G"
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
       }
     },
     "playPause": {
             "suggested_key": {
               "default": "Ctrl+Shift+Y",
-              "mac": "Command+Shift+Y"
+              "mac": "Command+Shift+L"
             },
     "description": "Toggle feature foo"
     }
