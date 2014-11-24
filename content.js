@@ -29,9 +29,9 @@ function(request, sender, sendResponse) {
         var str = ""; 
         document.getElementById("play-prev").click();
         sendResponse({data: str});//this is just a temporary fix :p
-  }else if(request.message == 'addtocollection'){
-        var str = ""; 
+  }else if(request.message == 'addtocollection'){ 
         document.getElementById("np-add").click();
+        var str = document.getElementById("np-add").getAttribute("class");
         sendResponse({data: str});//this is just a temporary fix :p
   }else if(request.message == "getNextAndPrev"){
         //get length of class name

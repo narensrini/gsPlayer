@@ -1,4 +1,5 @@
 function search() {
+	document.getElementById("add").onclick=addToCollection;
 	var artist = "Yo";
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		var tab = tabs[0];
@@ -97,7 +98,7 @@ function playPause() {
 function playPrev() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'playprev'}, function(response) {
-			sleep(500);
+			sleep(800);
 			search();
 			getAlbumArt();
 			return;
@@ -108,7 +109,7 @@ function playPrev() {
 function playNext() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'playnext'}, function(response) {
-			sleep(500);
+			sleep(800);
 			search();
 			getAlbumArt();
 			return;
@@ -117,11 +118,14 @@ function playNext() {
 }
 
 function addToCollection() {
-	var tab = chrome.tabs.getCurrent;
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'addtocollection'}, function(response) {
-			chrome.tabs.update(tab.id, {active:true});
-			return;
+			if(response == "icon np-action") {
+				document.getElementById("add").innerHTML = "Add To Collection!"
+			}
+			if(response == "icon np-action active") {
+				document.getElementById("add").innerHTML = "Remove from Collection!"	
+			}
 		});
 	});
 }
