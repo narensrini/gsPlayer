@@ -8,6 +8,8 @@ body{
 	padding-right: 10px;
 	border-radius: 2.5px;
 	box-shadow: 2px 2 5px black;
+	width: 225px; 
+	height: 40px;
 }
 #Stuff{
 	color: white;

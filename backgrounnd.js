@@ -59,6 +59,7 @@ function search() {
 				document.getElementById("next").onclick = playNext;
 				document.getElementById("prev").onclick = playPrev;
 				document.getElementById("playpause").onclick = playPause;
+//JAVASCRIPT SCROLLING
 				document.getElementById("Stuff").innerHTML = artist + " - " + title;
 				return;
 			});
