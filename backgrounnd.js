@@ -1,5 +1,7 @@
 function search() {
 	document.getElementById("add").onclick=addToCollection;
+	document.getElementById("add").style.visibility="hidden";
+	addReady();
 	var artist = "Yo";
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		var tab = tabs[0];
@@ -14,33 +16,36 @@ function search() {
                 if (getState == "pla"){
                 	document.getElementById("playpause").src = "/img/Pause.png";
                   document.getElementById("pstate").innerHTML = "<b>Now Playing</b> - ";
-                }else if (getState == "pau"){
+                }
+                else if (getState == "pau"){
                 	document.getElementById("playpause").src = "/img/Play.png";
                   document.getElementById("pstate").innerHTML = "<b>Paused</b> - ";
                 }
             });
-      chrome.tabs.sendMessage(tab.id, {message: "getNextAndPrev"}, function (response) {
-        //see if skip to next song or previous song is available.
-            NPStates = response.data;
-        });
+      		chrome.tabs.sendMessage(tab.id, {message: "getNextAndPrev"}, function (response) {
+      			//see if skip to next song or previous song is available.
+            	NPStates = response.data;
+        	});
 			chrome.tabs.sendMessage(tab.id, {message: "nowplaying"}, function(response) {
 				var n = response.data.search("title=\"");
 				if(n==-1) {
 					document.getElementById("Stuff").innerHTML = "Nothing is playing";
 					return;
-				}else{
-            if (NPStates[0]){ //check if prev is possible
-              document.getElementById("prev").src = "/img/Prev.png";
-            }else{
-              document.getElementById("prev").src = "/img/PrevFaded.png";
-            }
-            if (NPStates[1]){//check if next is possible
-              document.getElementById("next").src = "/img/Next.png";
-            }
-            else{
-              document.getElementById("next").src = "/img/NextFaded.png";
-            }
-        }
+				}
+				else {
+            		if (NPStates[0]){ //check if prev is possible
+              		document.getElementById("prev").src = "/img/Prev.png";
+            		}
+            		else {
+              			document.getElementById("prev").src = "/img/PrevFaded.png";
+            		}
+            		if (NPStates[1]) { //check if next is possible
+	              		document.getElementById("next").src = "/img/Next.png";
+	            	}
+	            	else {
+	              		document.getElementById("next").src = "/img/NextFaded.png";
+	            	}
+        		}
 				n+=7;
 				var i = n;
 				while(response.data[i] != ">") {
@@ -57,6 +62,10 @@ function search() {
 				};
 				i-=1;
 				artist = newstr.slice(n,i);
+				chrome.tabs.sendMessage(tab.id, {message: "login"}, function(response) {
+					if(response.data == 'Y')
+						document.getElementById("add").style.visibility="visible";
+				});
 				document.getElementById("next").onclick = playNext;
 				document.getElementById("prev").onclick = playPrev;
 				document.getElementById("playpause").onclick = playPause;
@@ -71,6 +80,17 @@ function search() {
 				return;
 			});
 		} 
+	});
+}
+
+function addReady() {
+	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
+		chrome.tabs.sendMessage(tabs[0].id, {message:'collectionstatus'}, function(response) {
+			if(response.data == 'icon np-action active')
+				document.getElementById("add").innerHTML = "Remove from Collection";
+			else if (response.data == 'icon np-action')
+				document.getElementById("add").innerHTML = "Add To Collection";
+		});
 	});
 }
 
@@ -127,15 +147,15 @@ function playNext() {
 function addToCollection() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'addtocollection'}, function(response) {
-			if(response == "icon np-action") {
-				document.getElementById("add").innerHTML = "Add To Collection!"
-			}
-			if(response == "icon np-action active") {
-				document.getElementById("add").innerHTML = "Remove from Collection!"	
-			}
+			if(document.getElementById("add").innerHTML == "Add To Collection")
+				document.getElementById("add").innerHTML = "Remove from Collection";
+			else
+				document.getElementById("add").innerHTML = "Add To Collection";
 		});
 	});
 }
+
+
 
 chrome.commands.onCommand.addListener(function(command) {
   search();

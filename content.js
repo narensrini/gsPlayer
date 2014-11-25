@@ -33,6 +33,9 @@ function(request, sender, sendResponse) {
         document.getElementById("np-add").click();
         var str = document.getElementById("np-add").getAttribute("class");
         sendResponse({data: str});//this is just a temporary fix :p
+  }else if(request.message == 'collectionstatus'){ 
+        var str = document.getElementById("np-add").getAttribute("class");
+        sendResponse({data: str});//this is just a temporary fix :p
   }else if(request.message == "getNextAndPrev"){
         //get length of class name
         var states = [1,1];//start by assuming both are valid
@@ -46,5 +49,11 @@ function(request, sender, sendResponse) {
           states[1] = 0; 
         }
         sendResponse({data: states}); 
+  }
+  else if(request.message == 'login') {
+        if(document.getElementById("notification-button"))
+            sendResponse({data: 'Y'});
+        else
+            sendResponse({data: 'N'});
   }
 });
