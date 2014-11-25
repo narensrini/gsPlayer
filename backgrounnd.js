@@ -1,6 +1,5 @@
 function search() {
-	document.getElementById("add").onclick=addToCollection;
-	document.getElementById("add").style.visibility="hidden";
+	document.getElementById("albumart").onclick=selectTab;
 	addReady();
 	var artist = "Yo";
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
@@ -83,6 +82,8 @@ function search() {
 }
 
 function addReady() {
+	document.getElementById("add").onclick=addToCollection;
+	document.getElementById("add").style.visibility="hidden";
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'collectionstatus'}, function(response) {
 			if(response.data === 'icon np-action active')
