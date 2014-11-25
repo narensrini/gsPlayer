@@ -5,7 +5,7 @@ function search() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		var tab = tabs[0];
 		if(tabs.length === 0) {
-			document.getElementById("Stuff").innerHTML = "Grooveshark isn't open!<br>Click <a id='open' href=''>here</a> to open";
+			document.getElementById("Stuff").innerHTML = "Grooveshark isn't open!<br><a id='open' href=''>Click here to open</a>";
 			document.getElementById("open").onclick = openGs;
 			return;
 		}
@@ -119,7 +119,7 @@ function getAlbumArt() {
 function playPause() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'playpause'}, function(response) {
-      sleep(500);
+      sleep(800);
 			search();
 			getAlbumArt();
 			return;
