@@ -119,7 +119,7 @@ function getAlbumArt() {
 function playPause() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'playpause'}, function(response) {
-      sleep(800);
+      sleep(500);
 			search();
 			getAlbumArt();
 			return;

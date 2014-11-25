@@ -59,15 +59,27 @@ body{
 	color: #A6A6A6;
 }
 #albumart{
-	margin-left: 5px;
+	margin-left: 10px;
 	border-radius: 5px;
 	padding-bottom: 20px;
 	width: 100px;
 	height: auto;
 }
+#prev{
+	margin-left: 5px;
+}
+#next{
+	margin-left: -5px;
+}
+#playpause{
+	margin-left: -5px;
+}
 #add{
-	background: white;
-	margin-bottom: 5px;
+	background: #2B2B2B;
+	color: white;
+	margin-bottom: 15px;
+	margin-left: 10px;
+	border-radius: 4.5px;
 }
 
 .wrapper{
