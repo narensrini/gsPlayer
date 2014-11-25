@@ -5,7 +5,7 @@ function search() {
 	var artist = "Yo";
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		var tab = tabs[0];
-		if(tabs.length == 0) {
+		if(tabs.length === 0) {
 			document.getElementById("Stuff").innerHTML = "Grooveshark isn't open!";
 			return;
 		}
@@ -13,11 +13,11 @@ function search() {
 		{
 			chrome.tabs.sendMessage(tab.id, {message: "getPlayState"}, function(response) {
                 var getState = response.data.slice(23,26);
-                if (getState == "pla"){
+                if (getState === "pla"){
                 	document.getElementById("playpause").src = "/img/Pause.png";
                   document.getElementById("pstate").innerHTML = "<b>Now Playing</b> - ";
                 }
-                else if (getState == "pau"){
+                else if (getState === "pau"){
                 	document.getElementById("playpause").src = "/img/Play.png";
                   document.getElementById("pstate").innerHTML = "<b>Paused</b> - ";
                 }
@@ -28,7 +28,7 @@ function search() {
         	});
 			chrome.tabs.sendMessage(tab.id, {message: "nowplaying"}, function(response) {
 				var n = response.data.search("title=\"");
-				if(n==-1) {
+				if(n===-1) {
 					document.getElementById("Stuff").innerHTML = "Nothing is playing";
 					return;
 				}
@@ -63,20 +63,19 @@ function search() {
 				i-=1;
 				artist = newstr.slice(n,i);
 				chrome.tabs.sendMessage(tab.id, {message: "login"}, function(response) {
-					if(response.data == 'Y')
+					if(response.data === 'Y')
 						document.getElementById("add").style.visibility="visible";
 				});
 				document.getElementById("next").onclick = playNext;
 				document.getElementById("prev").onclick = playPrev;
 				document.getElementById("playpause").onclick = playPause;
-				//If title length > 12, implement marquee
+				//If title length > 30, implement marquee
 				document.getElementById("Stuff").innerHTML = artist + " - " + title;
-				if(title.length>12){
-					document.getElementById("Stuff").parentElement.innerHTML=" "+document.getElementById("Stuff").parentElement.innerHTML+" ";
-					document.getElementById("Stuff").parentElement.innerHTML="<marquee>"+document.getElementById("Stuff").parentElement.innerHTML+"</marquee>";
-				}
-				else
-					document.getElementById("Stuff").parentElement.innerHTML=" "+document.getElementById("Stuff").parentElement.innerHTML+" ";
+				if(title.length+artist.length>30){
+					document.getElementById("Stuff").innerHTML="<marquee>" + artist+ " - " + title + "</marquee>";
+			 	}else{
+				  document.getElementById("Stuff").innerHTML = artist + " - " + title;
+        }
 				return;
 			});
 		} 
@@ -86,9 +85,9 @@ function search() {
 function addReady() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'collectionstatus'}, function(response) {
-			if(response.data == 'icon np-action active')
+			if(response.data === 'icon np-action active')
 				document.getElementById("add").innerHTML = "Remove from Collection";
-			else if (response.data == 'icon np-action')
+			else if (response.data === 'icon np-action')
 				document.getElementById("add").innerHTML = "Add To Collection";
 		});
 	});
@@ -147,7 +146,7 @@ function playNext() {
 function addToCollection() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'addtocollection'}, function(response) {
-			if(document.getElementById("add").innerHTML == "Add To Collection")
+			if(document.getElementById("add").innerHTML === "Add To Collection")
 				document.getElementById("add").innerHTML = "Remove from Collection";
 			else
 				document.getElementById("add").innerHTML = "Add To Collection";
