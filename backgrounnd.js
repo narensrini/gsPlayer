@@ -5,7 +5,8 @@ function search() {
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		var tab = tabs[0];
 		if(tabs.length === 0) {
-			document.getElementById("Stuff").innerHTML = "Grooveshark isn't open!";
+			document.getElementById("Stuff").innerHTML = "Grooveshark isn't open!<br>Click <a id='open' href=''>here</a> to open";
+			document.getElementById("open").onclick = openGs;
 			return;
 		}
 		else
@@ -79,6 +80,10 @@ function search() {
 			});
 		} 
 	});
+}
+
+function openGs() {
+		chrome.tabs.create({url:"http://www.grooveshark.com"});
 }
 
 function addReady() {
