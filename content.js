@@ -18,22 +18,22 @@ function(request, sender, sendResponse) {
  			str = document.getElementById("play-pause").className;
   		sendResponse({data: str});
   }else if(request.message == 'playpause'){
-        var str = ""; 
+        var str = "";
         document.getElementById("play-pause").click();
         sendResponse({data: str});//this is just a temporary fix :p
   }else if(request.message == 'playnext'){
-        var str = ""; 
+        var str = "";
         document.getElementById("play-next").click();
         sendResponse({data: str});//this is just a temporary fix :p
   }else if(request.message == 'playprev'){
-        var str = ""; 
+        var str = "";
         document.getElementById("play-prev").click();
         sendResponse({data: str});//this is just a temporary fix :p
-  }else if(request.message == 'addtocollection'){ 
+  }else if(request.message == 'addtocollection'){
         document.getElementById("np-add").click();
         var str = document.getElementById("np-add").getAttribute("class");
         sendResponse({data: str});//this is just a temporary fix :p
-  }else if(request.message == 'collectionstatus'){ 
+  }else if(request.message == 'collectionstatus'){
         var str = document.getElementById("np-add").getAttribute("class");
         sendResponse({data: str});//this is just a temporary fix :p
   }else if(request.message == "getNextAndPrev"){
@@ -43,12 +43,12 @@ function(request, sender, sendResponse) {
         var nextClass =  document.getElementById("play-next").getAttribute("class").length;
         console.log(nextClass);
         if (prevClass === 31){//then it's disabled
-          states[0] = 0; 
+          states[0] = 0;
         }
         if (nextClass === 31){//then it's disabled
-          states[1] = 0; 
+          states[1] = 0;
         }
-        sendResponse({data: states}); 
+        sendResponse({data: states});
   }
   else if(request.message == 'login') {
         if(document.getElementById("notification-button"))

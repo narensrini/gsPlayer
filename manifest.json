@@ -1,40 +1,40 @@
 {
-  "manifest_version": 2,
+    "manifest_version": 2,
 
-  "name": "Grooveshark",
-  "description": "Player",
-  "version": "1.0",
-  "background": {
+    "name": "Grooveshark",
+    "description": "Player",
+    "version": "1.0",
+    "background": {
         "scripts": ["backgrounnd.js"]
     },
-  "icons": { "16": "img/icon16.png",
-           "48": "img/icon48.png",
-          "128": "img/icon128.png" },
-  "browser_action": {
-    "default_title": "Groovershark",
-    "default_icon": "img/icon19.png",
-    "default_popup": "popup.html"
-  },
-  "commands": {
-    "_execute_browser_action": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+L",
-        "mac": "Command+Shift+L"
-      }
-    },
-    "playPause": {
-            "suggested_key": {
-              "default": "Ctrl+Shift+Y",
-              "mac": "Command+Shift+L"
+    "icons": { "16": "img/icon16.png",
+        "48": "img/icon48.png",
+        "128": "img/icon128.png" },
+        "browser_action": {
+            "default_title": "Groovershark",
+            "default_icon": "img/icon19.png",
+            "default_popup": "popup.html"
+        },
+        "commands": {
+            "_execute_browser_action": {
+                "suggested_key": {
+                    "default": "Ctrl+Shift+L",
+                    "mac": "Command+Shift+L"
+                }
             },
-    "description": "Toggle feature foo"
-    }
-  },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["content.js"]
-    }
-  ],
-  "permissions": ["tabs"]
+            "playPause": {
+                "suggested_key": {
+                    "default": "Ctrl+Shift+Y",
+                    "mac": "Command+Shift+L"
+                },
+                "description": "Toggle feature foo"
+            }
+        },
+        "content_scripts": [
+            {
+                "matches": ["<all_urls>"],
+                "js": ["content.js"]
+            }
+        ],
+        "permissions": ["tabs"]
 }
