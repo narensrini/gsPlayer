@@ -16,18 +16,9 @@
             "default_popup": "popup.html"
         },
         "commands": {
-            "_execute_browser_action": {
-                "suggested_key": {
-                    "default": "Ctrl+Shift+L",
-                    "mac": "Command+Shift+L"
-                }
-            },
-            "playPause": {
-                "suggested_key": {
-                    "default": "Ctrl+Shift+Y",
-                    "mac": "Command+Shift+L"
-                },
-                "description": "Toggle feature foo"
+            "toggle-feature": {
+                "suggested_key": { "default": "Ctrl+Shift+Y" },
+                "description": "Send a 'toggle-feature' event to the extension"
             }
         },
         "content_scripts": [
@@ -37,4 +28,5 @@
             }
         ],
         "permissions": ["tabs"]
-}
+        }
+

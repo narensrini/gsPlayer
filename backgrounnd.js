@@ -1,3 +1,7 @@
+chrome.commands.onCommand.addListener(function(command) {
+    alert('Command:', command);
+    //INSERT PLAY PAUSE FUNCTIONALITY FOR KEYBOARD SHORTCUTS HERE
+});
 function search() {
 	document.getElementById("albumart").onclick=selectTab;
 	addReady();
@@ -78,7 +82,7 @@ function search() {
         }
 				return;
 			});
-		} 
+		}
 	});
 }
 
@@ -161,12 +165,6 @@ function addToCollection() {
 }
 
 
-
-chrome.commands.onCommand.addListener(function(command) {
-  search();
-  getAlbumArt();
-});
-
 function sleep(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
@@ -175,3 +173,4 @@ function sleep(milliseconds) {
     }
   }
 }
+
