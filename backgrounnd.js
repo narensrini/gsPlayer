@@ -1,7 +1,8 @@
 function search() {
 	document.getElementById("albumart").onclick=selectTab;
 	addReady();
-	var artist = "Yo";
+    var popup = document.getElementById();
+    var artist = "Yo";
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		var tab = tabs[0];
 		if(tabs.length === 0) {
