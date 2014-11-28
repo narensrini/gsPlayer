@@ -171,12 +171,7 @@ function sleep(milliseconds) {
 }
 
 chrome.commands.onCommand.addListener(function(command) {
-    if(command == "playOrPause")
-        playPause();
-    else if(command == "nextSong")
-        playNext();
-    else if(command == "previousSong")
-        playPrev();
-    else if (command == "openGrooveshark")
-        openGs();
+    alert('aksdfjCommand:');
+    //work pls
+    //INSERT PLAY PAUSE FUNCTIONALITY FOR KEYBOARD SHORTCUTS HERE
 });

@@ -16,8 +16,21 @@
             "default_popup": "popup.html"
         },
         "commands": {
-            "toggle-feature": {
-                "suggested_key": { "default": "Ctrl+Shift+Y" },
+            "openGrooveshark": {
+                "suggested_key": { "default": "Ctrl+Shift+Down" },
+                "description": "Send a 'toggle-feature' event to the extension"
+            },
+            "playOrPause": {
+                "suggested_key": { "default": "Ctrl+Shift+Up" },
+                "description": "Send a 'toggle-feature' event to the extension"
+            },
+
+            "nextSong": {
+                "suggested_key": { "default": "Ctrl+Shift+Right" },
+                "description": "Send a 'toggle-feature' event to the extension"
+            },
+            "previousSong": {
+                "suggested_key": { "default": "Ctrl+Shift+Left" },
                 "description": "Send a 'toggle-feature' event to the extension"
             }
         },
