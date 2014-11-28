@@ -1,6 +1,6 @@
 gsPlayer
 ========
 
-A simple plugin for Grooveshark
+A minimalistic plugin for Grooveshark
 ----
-Indicates easily-accessible information about song that is currently playing
+Provides keyboard shortcuts and easy control of Grooveshark without having to constantly switch tabs.
