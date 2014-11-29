@@ -5,7 +5,7 @@
     "description": "Player",
     "version": "1.0",
     "background": {
-        "scripts": ["backgrounnd.js"]
+        "scripts": ["background.js"]
     },
     "icons": { "16": "img/icon16.png",
         "48": "img/icon48.png",
