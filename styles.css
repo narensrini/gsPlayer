@@ -1,7 +1,7 @@
 body{
 	background: linear-gradient(to bottom, #F4A515 , #F86F05);
 	width: 245px;
-	height: auto;
+	height: 15px;
 }
 #currentSong{
 	margin-top: 5px;
