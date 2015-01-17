@@ -57,4 +57,3 @@ function(request, sender, sendResponse) {
             sendResponse({data: 'N'});
   }
 });
-

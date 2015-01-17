@@ -1,8 +1,7 @@
 function search() {
 	document.getElementById("albumart").onclick=selectTab;
 	addReady();
-    var popup = document.getElementById();
-    var artist = "Yo";
+	var artist;
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		var tab = tabs[0];
 		if(tabs.length === 0) {
@@ -16,7 +15,7 @@ function search() {
                 var getState = response.data.slice(23,26);
                 if (getState === "pla"){
                 	document.getElementById("playpause").src = "/img/Pause.png";
-                  document.getElementById("pstate").innerHTML = "<b>Now Playing</b> - ";
+                  	document.getElementById("pstate").innerHTML = "<b>Now Playing</b> - ";
                 }
                 else if (getState === "pau"){
                 	document.getElementById("playpause").src = "/img/Play.png";
@@ -79,7 +78,7 @@ function search() {
         }
 				return;
 			});
-		}
+		} 
 	});
 }
 
@@ -118,6 +117,14 @@ function getAlbumArt() {
 }
 
 function playPause() {
+	if (document.getElementById("playpause").src == "chrome-extension://bjeeojajhcdokjfldjjcjcgeejojhinp/img/Pause.png") {
+		document.getElementById("playpause").src = "/img/Play.png";
+        document.getElementById("pstate").innerHTML = "<b>Paused</b> - ";
+    }
+    else if(document.getElementById("playpause").src == "chrome-extension://bjeeojajhcdokjfldjjcjcgeejojhinp/img/Play.png"){
+    	document.getElementById("playpause").src = "/img/Pause.png";
+        document.getElementById("pstate").innerHTML = "<b>Now Playing</b> - ";
+    }
 	chrome.tabs.query({url:"*://grooveshark.com/*"}, function(tabs) {
 		chrome.tabs.sendMessage(tabs[0].id, {message:'playpause'}, function(response) {
       sleep(800);
@@ -162,6 +169,12 @@ function addToCollection() {
 }
 
 
+
+chrome.commands.onCommand.addListener(function(command) {
+  search();
+  getAlbumArt();
+});
+
 function sleep(milliseconds) {
   var start = new Date().getTime();
   for (var i = 0; i < 1e7; i++) {
@@ -170,14 +183,3 @@ function sleep(milliseconds) {
     }
   }
 }
-
-chrome.commands.onCommand.addListener(function(command) {
-    if(command == "playOrPause")
-        playPause();
-    else if(command == "nextSong")
-        playNext();
-    else if(command == "previousSong")
-        playPrev();
-    else if (command == "openGrooveshark")
-        openGs();
-});

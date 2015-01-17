@@ -5,7 +5,7 @@
     "description": "Player",
     "version": "1.0",
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["backgrounnd.js"]
     },
     "icons": { "16": "img/icon16.png",
         "48": "img/icon48.png",
@@ -16,22 +16,18 @@
             "default_popup": "popup.html"
         },
         "commands": {
-            "openGrooveshark": {
-                "suggested_key": { "default": "Ctrl+Shift+Down" },
-                "description": "Send a 'toggle-feature' event to the extension"
+            "_execute_browser_action": {
+                "suggested_key": {
+                    "default": "Ctrl+Shift+L",
+                    "mac": "Command+Shift+L"
+                }
             },
-            "playOrPause": {
-                "suggested_key": { "default": "Ctrl+Shift+Up" },
-                "description": "Send a 'toggle-feature' event to the extension"
-            },
-
-            "nextSong": {
-                "suggested_key": { "default": "Ctrl+Shift+Right" },
-                "description": "Send a 'toggle-feature' event to the extension"
-            },
-            "previousSong": {
-                "suggested_key": { "default": "Ctrl+Shift+Left" },
-                "description": "Send a 'toggle-feature' event to the extension"
+            "playPause": {
+                "suggested_key": {
+                    "default": "Ctrl+Shift+Y",
+                    "mac": "Command+Shift+L"
+                },
+                "description": "Toggle feature foo"
             }
         },
         "content_scripts": [
@@ -41,5 +37,4 @@
             }
         ],
         "permissions": ["tabs"]
-        }
-
+}
